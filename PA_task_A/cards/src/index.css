@@ -1,0 +1,80 @@
+
+.accordion {
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 20px; 
+  width: 1000px;
+  max-width: 1000px;
+  margin: 2rem auto;
+  border-style: outset; 
+ 
+ 
+}
+.title{
+  font-size: 30px;
+  padding: 40px;
+  font-family: "Roboto";
+  color:rgb(23,18,59);
+
+
+}
+.card{
+  border-radius: 10px;
+  border: 1px solid rgb(248, 246, 246);
+}
+
+
+.grid-container {
+
+  display: grid;
+  grid-template-columns: 1fr 20% 20% 20% ;
+}
+.grid{
+  position: contents;
+  padding: 20px ;
+  text-align: left;
+  font-size: 15px;
+  font-family: "Roboto";
+  color:rgb(23,18,59);
+
+}
+.grid4{
+  position: contents;
+  padding: 20px ;
+  text-align: right;
+  font-size: 15px;
+  font-family: "Roboto";
+  color:rgb(23,18,59);
+
+}
+.grid-item {
+  position: contents;
+  padding: 20px ;
+  text-align: left;
+  font-size: 15px;
+  font-family: "Roboto";
+  color:rgb(23,18,59);
+ 
+}
+.card:hover{
+  background-color: rgba(0,0,0,0.05)
+}
+.grid-container:hover {
+  background-color: rgba(0,0,0,0.05)
+}
+
+
+
+
+
+.content {
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+  padding: 20px; 
+  max-width: 900px;
+  margin: 2rem auto;
+  border-style: outset; 
+  font-size: 13px;
+  font-family: "Roboto";
+  color:rgb(116,113,137);
+}
