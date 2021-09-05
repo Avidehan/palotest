@@ -2,7 +2,7 @@
 import './index.css';
 import React, { useState,useEffect } from 'react';
 import ShowMoreText from "react-show-more-text";
-
+import Card from './Card.svg'
 function parseTime(time){
   var date = new Date(time).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
   return date
@@ -12,6 +12,7 @@ function parseTime(time){
 function App() {
   const [isActive, setIsActive] = useState(null);
   const [data, setData] = useState([]);
+  const [content,setCont]=useState();
   useEffect(() => {
     fetch("http://localhost:8080/get")
       .then((res) => res.json())
@@ -41,7 +42,17 @@ function App() {
                                         else
                                         {
                                             setIsActive(row_index)
-                                        }}} 
+                                        }
+
+                                        if("details" in data && "tags" in data.details){
+                                            setCont( <div className="content"><p><b>Status</b> : {data.details.status} </p> 
+                                                                            <p><b>Severity </b>:{data.details.severity}</p> 
+                                                                            <p><b>Tags</b> :{JSON.stringify(data.details.tags).replace(/[^a-zA-Z0-9 : ,_ ]/g, " ") }</p></div>)
+                                        }
+                                        else{
+                                            setCont(<div ><img src={Card} height="50px" width="50px"/></div>)
+                                        }
+                                      }} 
                         
                                         >
                                         <ShowMoreText 
@@ -58,17 +69,12 @@ function App() {
                                                 <div className='grid4'> {data.errors}</div>
                                     
                           </div>
-                           {isActive===row_index &&  <div className="content"><p><b>Status</b> : {data.details.status} </p> 
-                          <p><b>Severity </b>:{data.details.severity}</p> <p> <b>Tags</b> :{JSON.stringify(data.details.tags).replace(/[^a-zA-Z0-9 : ,_ ]/g, " ") }</p></div>}
+                           {
+                          isActive===row_index &&  <div className="content">{content}</div>}
                         </div>
-      
-      )
-    })}
-
-
-
-       
-      </div>
+                        )
+             })}
+     </div>
     </div>
   );
 }

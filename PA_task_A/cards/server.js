@@ -13,9 +13,18 @@ app.use('/get', (req, res) => {
         );
 
 });
+
 app.post('/post',((req,res)=>{
-    //req.body.map((a)=>{data.push(a)})//If we send an array of json
-    data.push(req.body);//If we send an json 
+    const a=JSON.stringify(req.body)
+    if (a.startsWith("[")) {
+      console.log("no");
+      req.body.map((a)=>{data.push(a)})//If we send an array of json
+      }
+    else {  
+      console.log("yes");
+      data.push(req.body);//If we send an json
+      
+    }
     if(!data){
     return res.status(400).json({
         error: true,

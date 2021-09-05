@@ -3,7 +3,6 @@
         "resource": "aws_s3_bucket",
         "category": "Storage",
         "creation_date": "1628406616705",
-        "errors":"7",
         "details": {
             "severity": "low",
             "status": "error",
