@@ -30,6 +30,7 @@ function App() {
    
   return (
     <div>
+      <button class="b" onClick={()=>{server_post(test)}}>Sending information from the file</button>
     <div>
       <h2>Write the information inside the square </h2>
       <p><b>-	Resource</b> - string</p>
@@ -49,7 +50,7 @@ function App() {
             else{  
                 if(!("errors" in a))
                     a["errors"]=1;
-                setComment(<button onClick={()=>{server_post(a)}}>Click to send the data</button>)
+                setComment(<button class="a"onClick={()=>{server_post(a)}}>Click to send the data</button>)
                 }
       }
       else{

@@ -1,4 +1,6 @@
 
+
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -11,26 +13,28 @@ app.use('/get', (req, res) => {
     res.send(
          data
         );
-
+        // console.log(req.body)
+        // data.splice(req.body,1)   
 });
+
+
 
 app.post('/post',((req,res)=>{
     const a=JSON.stringify(req.body)
+    if(!a){
+      return res.status(400).json({
+          error: true,
+          message: "send egein"
+        });
+      }
     if (a.startsWith("[")) {
-      console.log("no");
       req.body.map((a)=>{data.push(a)})//If we send an array of json
       }
     else {  
-      console.log("yes");
       data.push(req.body);//If we send an json
       
     }
-    if(!data){
-    return res.status(400).json({
-        error: true,
-        message: "send egein"
-      });
-    }
+    
     return res.json(data)
 
         

@@ -10,8 +10,12 @@ textarea{
   font-size: 16px;
   resize: none;
 }
-button{
+button.a{
   margin-left: 200px;
+}
+button.b{
+  /* margin-top:100px ; */
+  margin-left: 800px;
 }
 p.a{
   text-indent: 70px;

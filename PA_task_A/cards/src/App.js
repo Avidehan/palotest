@@ -3,6 +3,11 @@ import './index.css';
 import React, { useState,useEffect } from 'react';
 import ShowMoreText from "react-show-more-text";
 import Card from './Card.svg'
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+
+
+
+
 function parseTime(time){
   var date = new Date(time).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
   return date
@@ -11,8 +16,9 @@ function parseTime(time){
 
 function App() {
   const [isActive, setIsActive] = useState(null);
-  const [data, setData] = useState([]);
+  const [Data, setData] = useState([]);
   const [content,setCont]=useState();
+  const [del,setDel]=useState(true);
   useEffect(() => {
     fetch("http://localhost:8080/get")
       .then((res) => res.json())
@@ -23,18 +29,25 @@ function App() {
         console.log(err);
       });
   }, []);
-  
+  function delitem(index){
+ 
+    Data.splice(index,1);
+    
+
+  }
   return (
     <div >
       
      
       <div className="accordion">
         
-            <div class="title"> {data.length} Total Erorrs</div>
-              {data.map((data,row_index) => {
+            <div class="title"> {Data.length} Total Erorrs</div>
+              {Data.map((data,row_index) => {
+                       
                   return (
                     <div className="card">
                           <div className="grid-container" onClick={() =>{
+                                        
                                         if (isActive === row_index)
                                         {
                                             setIsActive( null)
@@ -67,10 +80,11 @@ function App() {
                                                 <div className='grid'> {data.category}</div>
                                                 <div className='grid-item' > {parseTime(Number(data.creation_date))}</div>
                                                 <div className='grid4'> {data.errors}</div>
+                                                <div className='grid5'><button onClick={()=>{delitem(row_index) ;}} > <DeleteOutlinedIcon/></button></div>
                                     
                           </div>
                            {
-                          isActive===row_index &&  <div className="content">{content}</div>}
+                          isActive===row_index  &&  <div className="content">{content}</div>}
                         </div>
                         )
              })}
