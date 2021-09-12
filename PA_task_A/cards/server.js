@@ -13,8 +13,6 @@ app.use('/get', (req, res) => {
     res.send(
          data
         );
-        // console.log(req.body)
-        // data.splice(req.body,1)   
 });
 
 

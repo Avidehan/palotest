@@ -18,7 +18,7 @@ function App() {
   const [isActive, setIsActive] = useState(null);
   const [Data, setData] = useState([]);
   const [content,setCont]=useState();
-  const [del,setDel]=useState(true);
+  
   useEffect(() => {
     fetch("http://localhost:8080/get")
       .then((res) => res.json())
